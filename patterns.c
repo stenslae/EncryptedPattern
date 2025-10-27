@@ -192,7 +192,7 @@ void print_errs(int errtype){
             "Usage:\n"
             "  ./server -t PORT \n\n"
             "Description:\n"
-            "  Recieve an encrypted 32 byte message pattern to a server.\n\n"
+            "  Recieve an encrypted 4 byte message pattern to a server.\n\n"
             "Arguments:\n"
             "  -t PORT               set the port for TCP.\n"
         );
@@ -218,9 +218,9 @@ void print_errs(int errtype){
 
     printf(
         "Usage:\n"
-        "  ./client [-h] [-v] [-t PORT] ([-f FILE] | [-p VALUE,TIME])\n\n"
+        "  ./client [-h] [-v] ([-f FILE] | [-p VALUE,TIME])\n\n"
         "Description:\n"
-        "  Send an encrypted 32 byte message pattern to a server.\n\n"
+        "  Send an encrypted 4 byte message pattern to a server.\n\n"
         "Arguments:\n"
         "  -h                    show this help message and exit\n"
         "  -v                    enable verbose output\n"

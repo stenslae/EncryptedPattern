@@ -50,7 +50,7 @@ int main(int argc, char *argv[]){
 
         // Verbose Output
         if (v){
-            printf("LED Pattern: 0x%x Display Time: %d ms\n",
+            printf("Stending Pattern: 0x%x Delay Time: %d ms\n",
                    led_pattern[count],
                    delay_pattern[count]);
         }
@@ -69,6 +69,9 @@ int main(int argc, char *argv[]){
             count++;
         }
     }
+
+    // TODO: Send close packet
+    
 
     printf("\n");
     free(led_pattern);

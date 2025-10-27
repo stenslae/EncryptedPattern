@@ -45,8 +45,10 @@ int main(int argc, char *argv[]) {
 
     // Listens for recieving file
     while(1){
-        // Stuff here
-
+        // Case handle:
+        // pattern (time for next packet) and save to file
+        // verbose: print time from last packet send + pattern recieved
+        // end connection
     }
 
     // closing the connected socket
