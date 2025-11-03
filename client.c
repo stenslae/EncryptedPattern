@@ -50,7 +50,7 @@ int main(int argc, char *argv[]){
 
         // Verbose Output
         if (v){
-            printf("Stending Pattern: 0x%x Delay Time: %d ms\n",
+            printf("Stending Pattern: % Delay Time: %d ms\n",
                    led_pattern[count],
                    delay_pattern[count]);
         }
