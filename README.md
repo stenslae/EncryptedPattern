@@ -10,34 +10,30 @@
 
 ## Dependencies
 
-## Installation
-1. Clone this repo on a machine that's running a Linux distro.
-2. Install all OpenSSL dependencies:
+- Run on a Linux machine or VM.
+
+- Install OpenSSL:
 
 ```bash
-sudo studio apt install
-sudo dpkg --add-architecture armhf
-sudo apt-get update
 sudo apt install openssl
-sudo apt-get install libssl-dev:armhf
 ```
 
-3. In this directory, run make to get the executable for the ARM CPU using the following:
+## Installation
+
+1. Clone this repo on a machine that's running a Linux distro.
+
+2. In this directory, run make to get the executable for the ARM CPU using the following:
 
 ```bash
-make CC=arm-linux-gnueabihf-gcc
+make
 ```
 
-4. Copy this compiled file into the mounted NFS Kernel's home using the following:
+3. Run `server` in one terminal, using the instructions in [Server Usage](#server-usage)
 
-```bash
-cp encrypt /srv/nfs/de10nano/nfs-kernel-server/home/soc/
-```
-
-5. Run `server` in one terminal, using the instructions in [Server Usage](#server-usage)
-6. Run `client` in another terminal, using the instructions in [Client Usage](#client-usage). An example file, [pattern1.txt](assets/pattern1.txt) for -f is provided.
+4. Run `client` in another terminal, using the instructions in [Client Usage](#client-usage). An example file, [pattern1.txt](assets/pattern1.txt) for -f is provided.
 
 ## Server Usage
+
 ### Usage:
 ./server -t PORT
             
