@@ -2,40 +2,31 @@
 
 ## Project Description
 
-**Encrypted Patterns** is a client-server demo written in C that transmits pattern data over TCP using the OpenSSL's cryptography library. It demonstrates RSA & AES encryption, socket programming, and command-line interface handling with getopt.
-
-## Flowchart
-
-![Flowchart](assets/flowchart.png)
+**Encrypted Patterns** is a client-server demo written in C that transmits encrypted pattern data from a client to a server. It demonstrates SHA-256 hashing & AES-128-CBC encryption, TCP sockets, and command-line interface handling with getopt.
 
 ## Dependencies
 
-- Run on a Linux machine or VM.
-
-- Install OpenSSL:
+- Run on a Linux machine or VM with `gcc` & `cmake` installed.
+- Install the latest version of OpenSSL:
 
 ```bash
 sudo apt install openssl
 ```
 
-## Installation
+## Usage
 
-1. Clone this repo on a machine that's running a Linux distro.
+1. Clone the repository.
+2. In this directory, run `make` (or use the provided executables).
+3. In the `keys` folder, run `bash genkeys.sh` (or use the pre-generated keys).
+4. In one terminal, run the server using the instructions in [Server Usage](#server).
+5. In another terminal, run the client using the instructions in [Client Usage](#client). An example file, `pattern1.txt`, is provided for the `-f` option.
 
-2. In this directory, run make to get the executable for the ARM CPU using the following:
 
-```bash
-make
-```
+## Server
 
-3. Run `server` in one terminal, using the instructions in [Server Usage](#server-usage)
+### Command:
 
-4. Run `client` in another terminal, using the instructions in [Client Usage](#client-usage). An example file, [pattern1.txt](assets/pattern1.txt) for -f is provided.
-
-## Server Usage
-
-### Usage:
-./server -t PORT
+>./server -t PORT
             
 ### Description:
 Recieve an encrypted 4 byte message pattern to a server.
@@ -51,26 +42,35 @@ Recieve an encrypted 4 byte message pattern to a server.
 ./server -t 8001
 ```
 
-## Client Usage
-### Usage:
-./client [-h] [-v] ([-f FILE] | [-p VALUE,TIME])
+## Client
+
+### Command:
+
+>./client [-h] [-v] (-f FILE | -p VALUE,TIME)
 
 ### Description:
 Send an encrypted 4 byte message pattern to a server.
 
 ### Arguments:
 
-| **Arg**  | **Opt** | **Description** |
+| **Arg** | **Opt** | **Description** |
 | :--- | :---: | ---: |
 |-h| |show this help message and exit|
 |-v| |enable verbose output|
-|-p|VALUE,TIME|specify pattern with VALUE (hex) and TIME (ms). can be used multiple times to create a sequence.|
+|-p|VALUE(hex),TIME(ms)|specify pattern, can repeat for a sequence.|
 |-f|FILE|specify a text file with \<VALUE> \<TIME> lines|
 
 ### Example:
 
-![Example Output](assets/example_output.png)
+```bash
+./client -v -f pattern1.txt
+./client -p 0x01,200 -p 0xff,500 -p 0x32,200
+```
+
+## Flowchart
+
+![Flowchart](assets/flowchart.png)
 
 ## Acknowledgments 
-- **Language and Tools**: C
+- **Language**: C
 - **Tools** Getopt, OpenSSL
