@@ -214,6 +214,8 @@ void print_errs(int errtype){
     else if (errtype == ERR_INVALID_FORMAT_FILE){
         printf("Error 4: The format of the file for -f is "
                "incorrect.\n");
+    }else if (errtype == ERR_BAD_ENCRYPT){
+        printf("ERROR: Encryption/decryption process failed. Please try again.\n");
     }
 
     printf(

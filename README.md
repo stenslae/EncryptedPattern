@@ -2,7 +2,7 @@
 
 ## Project Description
 
-**Encrypted Patterns** is a client-server demo written in C that transmits pattern data over TCP using the wolfSSL WolfCrypt library. It demonstrates RSA & AES encryption, socket programming, and command-line interface handling with getopt.
+**Encrypted Patterns** is a client-server demo written in C that transmits pattern data over TCP using the OpenSSL's cryptography library. It demonstrates RSA & AES encryption, socket programming, and command-line interface handling with getopt.
 
 ## Flowchart
 
@@ -10,12 +10,32 @@
 
 ## Dependencies
 
-
 ## Installation
-1. Clone this repo on your local machine that's running a Linux distro.
-2. If there are no executables, run make.
-3. Run `server` in one terminal, using the instructions in [Server Usage](#server-usage)
-3. Run `client` in another terminal, using the instructions in [Client Usage](#client-usage). An example file, [pattern1.txt](assets/pattern1.txt) for -f is provided.
+1. Clone this repo on a machine that's running a Linux distro.
+2. Install all OpenSSL dependencies:
+
+```bash
+sudo studio apt install
+sudo dpkg --add-architecture armhf
+sudo apt-get update
+sudo apt install openssl
+sudo apt-get install libssl-dev:armhf
+```
+
+3. In this directory, run make to get the executable for the ARM CPU using the following:
+
+```bash
+make CC=arm-linux-gnueabihf-gcc
+```
+
+4. Copy this compiled file into the mounted NFS Kernel's home using the following:
+
+```bash
+cp encrypt /srv/nfs/de10nano/nfs-kernel-server/home/soc/
+```
+
+5. Run `server` in one terminal, using the instructions in [Server Usage](#server-usage)
+6. Run `client` in another terminal, using the instructions in [Client Usage](#client-usage). An example file, [pattern1.txt](assets/pattern1.txt) for -f is provided.
 
 ## Server Usage
 ### Usage:
@@ -44,7 +64,7 @@ Send an encrypted 4 byte message pattern to a server.
 
 ### Arguments:
 
-| **Arg**  | **Opt** | **Desc** |
+| **Arg**  | **Opt** | **Description** |
 | :--- | :---: | ---: |
 |-h| |show this help message and exit|
 |-v| |enable verbose output|
@@ -53,12 +73,8 @@ Send an encrypted 4 byte message pattern to a server.
 
 ### Example:
 
-```bash
-./client -v -p 0x55,500 -p 0x0f,1500
-./client -f pattern.txt
-```
+![Example Output](assets/example_output.png)
 
 ## Acknowledgments 
 - **Language and Tools**: C
-- **Tools** VS Code, WSL, Git, WolfCrypt  
-- **Notes**: The scripts `patterns.c` and parts of `client.c` are modified from a `\dev\mem` script produced by Emma Stensland for Lab 8 of EELE 467 at MSU Bozeman.
+- **Tools** Getopt, OpenSSL
